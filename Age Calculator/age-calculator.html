@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Age Calculator</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(120deg, #89f7fe, #66a6ff);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        text-align: center;
+        width: 320px;
+    }
+
+    h2 {
+        color: #2b6cb0;
+    }
+
+    input, button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+
+    button {
+        background: #2b6cb0;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #2c5282;
+    }
+
+    p {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Age Calculator</h2>
+    <input type="number" id="birthYear" placeholder="Enter Birth Year">
+    <button onclick="calculateAge()">Calculate</button>
+    <p id="result"></p>
+</div>
+
+<script>
+function calculateAge() {
+    let birthYear = document.getElementById("birthYear").value;
+    let currentYear = new Date().getFullYear();
+    let age = currentYear - birthYear;
+    document.getElementById("result").innerText =
+        "Your age is " + age + " years";
+}
+</script>
+
+</body>
+</html>

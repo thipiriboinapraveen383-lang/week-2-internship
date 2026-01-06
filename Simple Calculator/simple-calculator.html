@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Calculator</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(120deg, #43e97b, #38f9d7);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .calculator {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        width: 350px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #2f855a;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+
+    .buttons button {
+        width: 48%;
+        padding: 10px;
+        margin: 5px 1%;
+        font-size: 15px;
+        background: #2f855a;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .buttons button:hover {
+        background: #276749;
+    }
+
+    p {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <h2>Simple Calculator</h2>
+    <input type="number" id="a" placeholder="First number">
+    <input type="number" id="b" placeholder="Second number">
+
+    <div class="buttons">
+        <button onclick="calc('+')">Add</button>
+        <button onclick="calc('-')">Subtract</button>
+        <button onclick="calc('*')">Multiply</button>
+        <button onclick="calc('/')">Divide</button>
+    </div>
+
+    <p id="res"></p>
+</div>
+
+<script>
+function calc(op) {
+    let x = Number(document.getElementById("a").value);
+    let y = Number(document.getElementById("b").value);
+    let r;
+
+    if (op === '+') r = x + y;
+    else if (op === '-') r = x - y;
+    else if (op === '*') r = x * y;
+    else if (op === '/') r = y !== 0 ? x / y : "Cannot divide by zero";
+
+    document.getElementById("res").innerText = "Result: " + r;
+}
+</script>
+
+</body>
+</html>
