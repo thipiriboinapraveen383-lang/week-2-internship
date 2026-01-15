@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">Multiplication Table Generator
+    <title></title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            perspective: 1200px;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 16px;
+            width: 360px;
+            text-align: center;
+            transform-style: preserve-3d;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+        }
+
+        h2 {
+            transform: translateZ(40px);
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            transform: translateZ(30px);
+        }
+
+        input, select {
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #4c51bf;
+            transition: all 0.2s ease;
+        }
+
+        button:active {
+            transform: translateZ(30px) translateY(8px);
+            box-shadow: 0 0 0 #4c51bf;
+        }
+
+        /* 🔥 3D OUTPUT STYLE */
+        .result {
+            margin-top: 20px;
+            transform-style: preserve-3d;
+        }
+
+        .result p {
+            background: linear-gradient(145deg, #ffffff, #e6e9ff);
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+
+            /* 3D DEPTH */
+            transform: translateZ(40px);
+            box-shadow:
+                0 4px 0 #c7cbe6,
+                0 10px 20px rgba(0,0,0,0.25);
+
+            transition: transform 0.3s ease;
+        }
+
+        .result p:hover {
+            transform: translateZ(55px) scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Multiplication Table Generator</h2>
+
+    <input type="number" id="number" placeholder="Enter number (e.g. 3)">
+    <input type="number" id="multiplier" placeholder="Enter multiplier (e.g. 7)">
+
+    <select id="mode">
+        <option value="single">Single Multiplication</option>
+        <option value="full">Full Table (1–10)</option>
+    </select>
+
+    <button onclick="generateTable()">Generate</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function generateTable() {
+    let num = document.getElementById("number").value;
+    let multiplier = document.getElementById("multiplier").value;
+    let mode = document.getElementById("mode").value;
+    let result = document.getElementById("result");
+
+        result.innerHTML = "";
+    
+        if (num === "") {
+            result.innerHTML = "<p>Please enter a number</p>";
+            return;
+        }
+    
+        if (mode === "single") {
+            if (multiplier === "") {
+                result.innerHTML = "<p>Please enter a multiplier</p>";
+                return;
+            }
+    
+            let n = Number(num);
+            let m = Number(multiplier);
+            let product = n * m;
+            result.innerHTML = `<p>${n} × ${m} = ${product}</p>`;
+        } else {
+            let n = Number(num);
+            for (let i = 1; i <= 10; i++) {
+                let product = n * i;
+                let p = document.createElement("p");
+                p.textContent = `${n} × ${i} = ${product}`;
+                result.appendChild(p);
+            }
+        }
+    }
+    </script>
+    </body>
+    </html>
